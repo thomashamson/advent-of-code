@@ -1,4 +1,4 @@
-"""Advent of Code: Day 2 - Puzzle 1"""
+"""Advent of Code: Day 2 - Puzzle 2"""
 
 import os.path
 fileParentPath = os.path.abspath(os.path.dirname(__file__))
@@ -23,6 +23,7 @@ validPass = 0
 
 # Loop and output
 for ln in lnList:
+
   # Get hyphen char position
   lnHyphen = ln.find('-')
 
@@ -38,18 +39,18 @@ for ln in lnList:
   # Get char
   lnChar = ln[lnColon-1:lnColon]
 
+  # Get charMin
+  lnCharMin = ln[lnColon+lnMin+1:lnColon+lnMin+2]
+
+  # Get charMax
+  lnCharMax = ln[lnColon+lnMax+1:lnColon+lnMax+2]
+
   # Get password
   lnPass = ln[lnColon+2:]
 
-  # Variable to store char count
-  lnCount = 0
-
-  for char in lnPass:
-      if char == lnChar:
-        lnCount = lnCount + 1
-
-  if lnCount >= lnMin and lnCount <= lnMax:
-    validPass = validPass + 1
+  if lnCharMin != lnCharMax:
+    if lnCharMin == lnChar or lnCharMax == lnChar:
+      validPass = validPass + 1
 
 # Output valid password count
 print(validPass)
